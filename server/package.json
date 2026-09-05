@@ -20,6 +20,12 @@
     "typescript": "^7.0.2"
   },
   "dependencies": {
+    "@langchain/core": "^1.2.9",
+    "@langchain/openai": "^1.5.11",
+    "@langchain/pinecone": "^1.0.3",
+    "@langchain/textsplitters": "^1.0.1",
+    "@octokit/rest": "^22.0.1",
+    "@pinecone-database/pinecone": "^8.2.0",
     "@prisma/adapter-pg": "^7.10.0",
     "@prisma/client": "7",
     "@types/cors": "^2.8.19",
@@ -28,6 +34,7 @@
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "inngest": "^4.19.0",
+    "octokit": "^5.0.5",
     "pg": "^8.23.0",
     "prisma": "7",
     "zod": "^4.5.4"
