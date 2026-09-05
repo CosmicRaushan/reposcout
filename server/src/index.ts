@@ -6,12 +6,15 @@ import { errorHandler } from "./middleware/errror-handler.middleware";
 import cors from "cors"
 import { functions, inngest } from "./inngest";
 import { serve } from "inngest/express";
+import indexRoutes from "./routes/index.routes";
+import chatRoutes from "./routes/chat.routes"
 
 
 const app = express();
 const PORT = process.env.PORT;
 
 app.use(express.json());
+app.use("/api/inngest", serve({ client: inngest, functions }));
 
 app.use(
     cors({
@@ -25,7 +28,8 @@ app.get("/health", (req, res) => {
 });
 
 app.all('/api/auth/{*any}', toNodeHandler(auth));
-app.use("/api/inngest", serve({ client: inngest, functions }));
+app.use("/api/index", indexRoutes)
+app.use("/api/chat", chatRoutes)
 
 app.use(errorHandler)
 

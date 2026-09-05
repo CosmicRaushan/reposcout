@@ -14,6 +14,8 @@ function toText(content: unknown) {
 
 export async function askQuestion(repo: string, question: string, topK = 5) {
     const docs = await search(repo, question, topK);
+    console.log("Docs Found:", docs.length);
+    console.log(docs);
 
     if (!docs.length) {
         return {
