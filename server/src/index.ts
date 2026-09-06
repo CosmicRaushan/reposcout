@@ -8,7 +8,7 @@ import { functions, inngest } from "./inngest";
 import { serve } from "inngest/express";
 import indexRoutes from "./routes/index.routes";
 import chatRoutes from "./routes/chat.routes"
-
+import repositoryRoutes from "./routes/repositories.routes"
 
 const app = express();
 const PORT = process.env.PORT;
@@ -28,6 +28,7 @@ app.get("/health", (req, res) => {
 });
 
 app.all('/api/auth/{*any}', toNodeHandler(auth));
+app.use("/api/repositories", repositoryRoutes);
 app.use("/api/index", indexRoutes)
 app.use("/api/chat", chatRoutes)
 

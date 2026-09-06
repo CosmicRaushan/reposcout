@@ -6,7 +6,7 @@ export default function SignInPage() {
   const handleGithubLogin = async () => {
     await authClient.signIn.social({
       provider: "github",
-      callbackURL: "http://localhost:3001/dashboard",
+      callbackURL: "http://localhost:3001/dashboard?welcome=1",
     });
   };
 

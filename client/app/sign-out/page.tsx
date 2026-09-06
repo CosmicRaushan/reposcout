@@ -1,14 +1,15 @@
 "use client";
-import Home from "../page";
 
 import { authClient } from "@/src/lib/auth-client";
+import { useRouter } from "next/navigation";
 
 export default function SignOutPage() {
+  const router = useRouter();
     const handleGithubLogout = async () => {
         await authClient.signOut({
             fetchOptions: {
                 onSuccess: () => {
-                    window.location.href = "/"
+          router.push("/")
               }
           }
       })
@@ -24,7 +25,12 @@ export default function SignOutPage() {
         </p>
 
         <div className="flex gap-3">
-          <button className="flex-1 rounded-md border px-4 py-2">Cancel</button>
+          <button
+            onClick={() => router.push("/dashboard")}
+            className="flex-1 rounded-md border px-4 py-2"
+          >
+            Cancel
+          </button>
 
           <button
             onClick={handleGithubLogout}

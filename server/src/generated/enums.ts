@@ -9,7 +9,21 @@
 * 🟢 You can import this file directly.
 */
 
+export const RepositoryStatus = {
+  PENDING: 'PENDING',
+  PROCESSING: 'PROCESSING',
+  COMPLETED: 'COMPLETED',
+  FAILED: 'FAILED'
+} as const
+
+export type RepositoryStatus = (typeof RepositoryStatus)[keyof typeof RepositoryStatus]
 
 
-// This file is empty because there are no enums in the schema.
-export {}
+export const ChatQuestionStatus = {
+  PENDING: 'PENDING',
+  PROCESSING: 'PROCESSING',
+  COMPLETED: 'COMPLETED',
+  FAILED: 'FAILED'
+} as const
+
+export type ChatQuestionStatus = (typeof ChatQuestionStatus)[keyof typeof ChatQuestionStatus]

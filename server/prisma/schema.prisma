@@ -1,4 +1,3 @@
-
 datasource db {
   provider = "postgresql"
 }
@@ -14,15 +13,17 @@ model Post {
 }
 
 model User {
-  id            String    @id
+  id            String       @id
   name          String
   email         String
-  emailVerified Boolean   @default(false)
+  emailVerified Boolean      @default(false)
   image         String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
   sessions      Session[]
   accounts      Account[]
+  repositories  Repository[]
+  chatQuestions ChatQuestion[]
 
   @@unique([email])
   @@map("user")
@@ -76,4 +77,56 @@ model Verification {
 
   @@index([identifier])
   @@map("verification")
+}
+
+enum RepositoryStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+model Repository {
+  id String @id @default(ulid())
+  name      String
+  githubUrl String
+  owner    String
+  repoName String
+  status RepositoryStatus @default(PENDING)
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  chatQuestions ChatQuestion[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([status])
+  @@unique([userId, githubUrl])
+}
+
+enum ChatQuestionStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+model ChatQuestion {
+  id           String             @id @default(ulid())
+  repositoryId String
+  repository   Repository         @relation(fields: [repositoryId], references: [id], onDelete: Cascade)
+  userId       String
+  user         User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  question     String
+  status       ChatQuestionStatus @default(PENDING)
+  answer       String?
+  sources      Json?
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+
+  @@index([repositoryId])
+  @@index([userId])
+  @@index([status])
 }

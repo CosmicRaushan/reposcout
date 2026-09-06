@@ -401,7 +401,9 @@ export const ModelName = {
   User: 'User',
   Session: 'Session',
   Account: 'Account',
-  Verification: 'Verification'
+  Verification: 'Verification',
+  Repository: 'Repository',
+  ChatQuestion: 'ChatQuestion'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -417,7 +419,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "post" | "user" | "session" | "account" | "verification"
+    modelProps: "post" | "user" | "session" | "account" | "verification" | "repository" | "chatQuestion"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -791,6 +793,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Repository: {
+      payload: Prisma.$RepositoryPayload<ExtArgs>
+      fields: Prisma.RepositoryFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.RepositoryFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RepositoryPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.RepositoryFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RepositoryPayload>
+        }
+        findFirst: {
+          args: Prisma.RepositoryFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RepositoryPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.RepositoryFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RepositoryPayload>
+        }
+        findMany: {
+          args: Prisma.RepositoryFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RepositoryPayload>[]
+        }
+        create: {
+          args: Prisma.RepositoryCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RepositoryPayload>
+        }
+        createMany: {
+          args: Prisma.RepositoryCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.RepositoryCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RepositoryPayload>[]
+        }
+        delete: {
+          args: Prisma.RepositoryDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RepositoryPayload>
+        }
+        update: {
+          args: Prisma.RepositoryUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RepositoryPayload>
+        }
+        deleteMany: {
+          args: Prisma.RepositoryDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.RepositoryUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.RepositoryUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RepositoryPayload>[]
+        }
+        upsert: {
+          args: Prisma.RepositoryUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RepositoryPayload>
+        }
+        aggregate: {
+          args: Prisma.RepositoryAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateRepository>
+        }
+        groupBy: {
+          args: Prisma.RepositoryGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RepositoryGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.RepositoryCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RepositoryCountAggregateOutputType> | number
+        }
+      }
+    }
+    ChatQuestion: {
+      payload: Prisma.$ChatQuestionPayload<ExtArgs>
+      fields: Prisma.ChatQuestionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ChatQuestionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChatQuestionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ChatQuestionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChatQuestionPayload>
+        }
+        findFirst: {
+          args: Prisma.ChatQuestionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChatQuestionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ChatQuestionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChatQuestionPayload>
+        }
+        findMany: {
+          args: Prisma.ChatQuestionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChatQuestionPayload>[]
+        }
+        create: {
+          args: Prisma.ChatQuestionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChatQuestionPayload>
+        }
+        createMany: {
+          args: Prisma.ChatQuestionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ChatQuestionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChatQuestionPayload>[]
+        }
+        delete: {
+          args: Prisma.ChatQuestionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChatQuestionPayload>
+        }
+        update: {
+          args: Prisma.ChatQuestionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChatQuestionPayload>
+        }
+        deleteMany: {
+          args: Prisma.ChatQuestionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ChatQuestionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ChatQuestionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChatQuestionPayload>[]
+        }
+        upsert: {
+          args: Prisma.ChatQuestionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChatQuestionPayload>
+        }
+        aggregate: {
+          args: Prisma.ChatQuestionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateChatQuestion>
+        }
+        groupBy: {
+          args: Prisma.ChatQuestionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ChatQuestionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ChatQuestionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ChatQuestionCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -897,12 +1047,50 @@ export const VerificationScalarFieldEnum = {
 export type VerificationScalarFieldEnum = (typeof VerificationScalarFieldEnum)[keyof typeof VerificationScalarFieldEnum]
 
 
+export const RepositoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  githubUrl: 'githubUrl',
+  owner: 'owner',
+  repoName: 'repoName',
+  status: 'status',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type RepositoryScalarFieldEnum = (typeof RepositoryScalarFieldEnum)[keyof typeof RepositoryScalarFieldEnum]
+
+
+export const ChatQuestionScalarFieldEnum = {
+  id: 'id',
+  repositoryId: 'repositoryId',
+  userId: 'userId',
+  question: 'question',
+  status: 'status',
+  answer: 'answer',
+  sources: 'sources',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ChatQuestionScalarFieldEnum = (typeof ChatQuestionScalarFieldEnum)[keyof typeof ChatQuestionScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const NullableJsonNullValueInput = {
+  DbNull: DbNull,
+  JsonNull: JsonNull
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
 export const QueryMode = {
@@ -919,6 +1107,15 @@ export const NullsOrder = {
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
 
@@ -973,6 +1170,48 @@ export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel
  * Reference to a field of type 'DateTime[]'
  */
 export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+/**
+ * Reference to a field of type 'RepositoryStatus'
+ */
+export type EnumRepositoryStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RepositoryStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'RepositoryStatus[]'
+ */
+export type ListEnumRepositoryStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RepositoryStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'ChatQuestionStatus'
+ */
+export type EnumChatQuestionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ChatQuestionStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'ChatQuestionStatus[]'
+ */
+export type ListEnumChatQuestionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ChatQuestionStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Json'
+ */
+export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+/**
+ * Reference to a field of type 'QueryMode'
+ */
+export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
     
 
 
@@ -1145,6 +1384,8 @@ export type GlobalOmitConfig = {
   session?: Prisma.SessionOmit
   account?: Prisma.AccountOmit
   verification?: Prisma.VerificationOmit
+  repository?: Prisma.RepositoryOmit
+  chatQuestion?: Prisma.ChatQuestionOmit
 }
 
 /* Types for Logging */

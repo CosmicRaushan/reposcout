@@ -66,3 +66,13 @@ export type Account = Prisma.AccountModel
  * 
  */
 export type Verification = Prisma.VerificationModel
+/**
+ * Model Repository
+ * 
+ */
+export type Repository = Prisma.RepositoryModel
+/**
+ * Model ChatQuestion
+ * 
+ */
+export type ChatQuestion = Prisma.ChatQuestionModel

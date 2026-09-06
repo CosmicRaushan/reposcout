@@ -23,8 +23,8 @@ export default function DashboardLayout({
   }
 
   if (!session) {
-    null;
+    return null;
   }
-  console.log("children outoy:", children);
+
   return <>{children}</>;
 }

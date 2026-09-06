@@ -1,8 +1,12 @@
 import { Router } from "express";
 import { parseRepo } from "../services/github";
 import { inngest } from "../inngest";
+import { requireAuth } from "../middleware/require-auth.middleware";
+import { createRepository } from "../services/repository.services";
 
 const router = Router();
+
+router.use(requireAuth);
 
 router.post("/", async (req, res, next) => {
     try {
@@ -23,11 +27,24 @@ router.post("/", async (req, res, next) => {
             });
         }
 
-        const { owner, repo: repoName, repoKey } = parseRepo(repo);
+        const {
+            owner,
+            repo: repoName,
+            repoKey,
+        } = parseRepo(repo);
+
+        const repository = await createRepository({
+            name: repoName,
+            githubUrl: repo,
+            owner,
+            repoName,
+            userId: req.session!.user.id,
+        });
 
         await inngest.send({
             name: "repo/index.requested",
             data: {
+                repositoryId: repository.id,
                 githubToken,
                 owner,
                 repo: repoName,
@@ -36,6 +53,9 @@ router.post("/", async (req, res, next) => {
         });
 
         return res.status(202).json({
+            success: true,
+            repositoryId: repository.id,
+            status: repository.status,
             message: "Repository indexing started",
         });
     } catch (error) {
