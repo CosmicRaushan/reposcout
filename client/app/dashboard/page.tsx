@@ -66,6 +66,7 @@ export default function Dashboard() {
         message: "Your workspace is ready.",
         tone: "success",
       });
+      setTimeout(() => setNotice(null), 2000);
     }, 0);
     const timeout = window.setTimeout(() => setNotice(null), 2000);
     window.history.replaceState(null, "", "/dashboard");
