@@ -194,30 +194,15 @@ export function RepositoryWorkspace({
 
       <div className="relative grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
         <div>
-          <div className="mb-5 flex size-11 items-center justify-center rounded-2xl border border-[#d09a82]/25 bg-[#b97861]/10 text-[#d09a82]">
-            <svg
-              aria-hidden="true"
-              className="size-5"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.7"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 3v18m9-9H3"
-              />
-            </svg>
-          </div>
+         
           <p className="font-sans text-xs font-semibold tracking-[0.2em] text-[#d09a82] uppercase">
             Add a repository
           </p>
           <h2 className="mt-3 max-w-md font-sans text-2xl font-semibold tracking-[-0.03em] text-white sm:text-3xl">
-            Bring your codebase into focus.
+            Bring your Codebase and Past it here.
           </h2>
           <p className="mt-3 max-w-md font-sans text-sm leading-6 text-zinc-400">
-            RepoScout will index the repository so you can ask focused questions
+            RepoScout will index the repository so you can ask any questions
             about its code.
           </p>
         </div>

@@ -27,29 +27,23 @@ export const indexRepo = inngest.createFunction(
             const repoName = repo.replace(/\.git$/, "");
             const repoKey = `${owner}/${repoName}`;
 
-            const files = await step.run(
-                "fetch-github-files",
+            const indexingResult = await step.run(
+                "fetch-chunk-and-save-repository",
                 async () => {
-                    return fetchRepoFiles(
+                    const files = await fetchRepoFiles(
                         githubToken,
                         owner,
-                        repoName
+                        repoName,
                     );
-                }
-            );
+                    const documents = await chunkFiles(files, repoKey);
+                    const saveResult = await saveChunks(repoKey, documents);
 
-            const documents = await step.run(
-                "chunk-files",
-                async () => {
-                    return chunkFiles(files, repoKey);
-                }
-            );
-
-            const saveResult = await step.run(
-                "save-chunks-to-pinecone",
-                async () => {
-                    return saveChunks(repoKey, documents);
-                }
+                    return {
+                        fileCount: files.length,
+                        chunkCount: documents.length,
+                        saved: saveResult.saved,
+                    };
+                },
             );
 
             await step.run("mark-completed", async () => {
@@ -60,9 +54,7 @@ export const indexRepo = inngest.createFunction(
 
             return {
                 repo: repoKey,
-                fileCount: files.length,
-                chunkCount: documents.length,
-                saved: saveResult.saved,
+                ...indexingResult,
             };
         } catch (error) {
             await step.run("mark-failed", async () => {

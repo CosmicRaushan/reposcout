@@ -24,7 +24,7 @@ type DashboardSection = "overview" | "repositories";
 function GlassNotice({ notice }: { notice: Notice }) {
   return (
     <div
-      className={`fixed bottom-6 right-6 z-50 w-[min(22rem,calc(100vw-3rem))] rounded-2xl border p-4 shadow-[0_18px_60px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.2)] ${notice.tone === "success" ? "border-emerald-300/25 bg-emerald-950/85" : "border-white/20 bg-[#252022]/90"}`}
+      className={`fixed bottom-6 right-6 z-50 w-[min(20rem,calc(100vw-3rem))] rounded-xl border p-2 shadow-[0_18px_60px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.2)] ${notice.tone === "success" ? "border-emerald-300/25 bg-emerald-950/85" : "border-white/20 bg-[#252022]/90"}`}
     >
       <div className="flex items-start gap-3">
         <span
@@ -169,6 +169,13 @@ export default function Dashboard() {
                   tone: "success",
                   persistent: true,
                 });
+                window.setTimeout(() => {
+                  setNotice((currentNotice) =>
+                    currentNotice?.title === "Indexing in progress"
+                      ? null
+                      : currentNotice,
+                  );
+                }, 2000);
               }}
               onIndexCompleted={(message) => {
                 setRepositoryRefreshKey((key) => key + 1);
@@ -188,6 +195,13 @@ export default function Dashboard() {
               onIndexFailed={(message) => {
                 setRepositoryRefreshKey((key) => key + 1);
                 setNotice({ title: "Indexing failed", message, tone: "info" });
+                window.setTimeout(() => {
+                  setNotice((currentNotice) =>
+                    currentNotice?.title === "Indexing failed"
+                      ? null
+                      : currentNotice,
+                  );
+                }, 5000);
               }}
             />
           ) : null}

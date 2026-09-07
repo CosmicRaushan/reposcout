@@ -43,10 +43,10 @@ export function DashboardHeader({
 
   return (
     <header className="relative z-20 border-b border-white/10 bg-[#111113]/75 shadow-[0_12px_45px_rgba(0,0,0,0.28),inset_0_-1px_0_rgba(255,255,255,0.08)]">
-      <div className="mx-auto flex min-h-20 w-full max-w-[1440px] items-center justify-between gap-4 px-5 sm:px-8">
+      <div className="mx-auto flex min-h-20 w-full  max-w-[1440px] items-center justify-between gap-4 px-5 sm:px-8">
         <div className="flex min-w-0 flex-1 items-center gap-4">
           <p className="shrink-0 font-sans text-xl font-semibold tracking-[-0.04em] text-[#c98970] sm:hidden">
-            Reposcout
+            Repocouts
           </p>
           <div className="relative hidden max-w-md flex-1 sm:block">
             <svg
@@ -74,7 +74,7 @@ export function DashboardHeader({
           <button
             type="button"
             aria-label="Notifications"
-            className="flex size-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-zinc-500 transition-colors hover:border-white/20 hover:text-zinc-200"
+            className="flex size-9 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-zinc-500 transition-colors hover:border-white/20 hover:text-zinc-200 hover: cursor-events-auto focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#b97861]"
           >
             <svg
               aria-hidden="true"
@@ -95,7 +95,7 @@ export function DashboardHeader({
             <button
               type="button"
               aria-label={`Open account menu for ${user.name}`}
-              className="flex size-11 items-center justify-center overflow-hidden rounded-full border border-white/20 bg-white/[0.08] font-sans text-sm font-semibold tracking-[0.04em] text-[#d09a82] shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),0_8px_25px_rgba(0,0,0,0.3)] transition-all hover:border-[#b97861]/70 hover:bg-[#b97861]/15 hover:text-[#e2b09b] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#b97861]"
+              className="flex size-9 items-center justify-center overflow-hidden rounded-full border border-white/20 bg-white/[0.08] font-sans text-sm font-semibold tracking-[0.04em] text-[#d09a82] shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),0_8px_25px_rgba(0,0,0,0.3)] transition-all hover:border-[#b97861]/70 hover:bg-[#b97861]/15 hover:text-[#e2b09b] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#b97861]"
             >
               {user.image ? (
                 <span
