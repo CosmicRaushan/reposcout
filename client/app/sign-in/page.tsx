@@ -23,15 +23,13 @@ export default function SignInPage() {
     <main className="landing-shell flex min-h-screen items-center justify-center px-5 py-8 text-white">
       <div className="w-full max-w-md rounded-3xl border border-white/20 bg-white/[0.08] p-8 shadow-[0_25px_80px_rgba(0,0,0,.35),inset_0_1px_0_rgba(255,255,255,.2)] backdrop-blur-2xl sm:p-10">
         <div className="text-center">
-          <Link href="/" className="text-lg font-semibold tracking-[-0.03em] text-white">
+          <Link href="/" className="text-lg font-bold tracking-[-0.03em] text-white">
             Reposcout
           </Link>
-          <p className="mt-8 text-xs font-semibold tracking-[0.2em] text-[#ffc7a9] uppercase">
+          <p className="mt-2 text-xl font-semibold tracking-[0.09em] text-[#ffc7a9] uppercase">
             Welcome back
           </p>
-          <h1 className="mt-3 text-3xl font-semibold tracking-[-0.04em] text-white">
-            Sign in to your workspace
-          </h1>
+          
           <p className="mx-auto mt-3 max-w-xs text-sm leading-6 text-white/45">
             Connect your GitHub account to explore your repositories with context.
           </p>
@@ -40,7 +38,7 @@ export default function SignInPage() {
         <button
           type="button"
           onClick={handleGithubLogin}
-          className="mt-8 flex h-12 w-full items-center justify-center gap-3 rounded-xl border border-white/20 bg-white/[0.1] text-sm font-semibold text-white transition-colors hover:border-[#ffc7a9]/50 hover:bg-[#ffc7a9]/15"
+          className="mt-5 flex h-12 w-full items-center justify-center gap-3 rounded-xl border border-white/20 bg-white/[0.1] text-sm font-semibold text-white transition-colors hover:border-[#ffc7a9]/50 hover:bg-[#ffc7a9]/15"
         >
           <GithubIcon />
           Continue with GitHub
